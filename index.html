@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Depth map</title>
+    <style type="text/css">
+    body {
+        background: #fff;
+        padding: 0px;
+        margin: 0px;
+        outline: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+
+    #depthMap {
+        position: absolute;
+        border: none;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        padding: 0px;
+        margin: 0px;
+        overflow: hidden;
+    }
+
+    #depthMap canvas {
+        position: absolute;
+        z-index: 1;
+        transform: scale(1.05);
+        transition: transform 20s ease;
+    }
+
+    #depthMap.scale canvas {
+        transform: scale(1.2);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="depthMap" id="depthMap"></div>
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+    <script src='js/pixi.min.js'></script>
+    <script src="js/depthmap.js"></script>
+    <script type="text/javascript">
+
+    DepthMap.init({
+        id: 'depthMap',
+        image: 'img/image.jpg',
+        depthmap: 'img/mask.jpg',
+        size: {
+            w: 1280,
+            h: 854
+        },
+        centered: true,
+        tilt: false,
+        debuger: false,
+        scaleX_param: 60, // lower number - more impact
+        scaleY_param: 60, // lower number - more impact
+
+        scaleX_paramTouch: 50,
+        scaleY_paramTouch: 50
+    });
+
+    </script>
+</body>
+
+</html>
